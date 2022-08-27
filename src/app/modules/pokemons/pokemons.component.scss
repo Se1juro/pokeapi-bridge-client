@@ -1,0 +1,14 @@
+.container-pokedex {
+  padding: 1em;
+  display: flex;
+  flex-wrap: wrap;
+  border: 1px solid blue;
+  justify-content: center;
+  .card-pokemon {
+    border: 1px solid red;
+    margin-right: 1em;
+    margin-bottom: 1em;
+    padding: 1em;
+    border-radius: 1em;
+  }
+}

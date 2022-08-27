@@ -1,0 +1,4 @@
+<div class="card-pokemon" *ngFor="let pokemon of pokemons | async">
+  <img src="{{ pokemon.sprites.front_default }}" alt="" srcset="" />
+  <h3>{{ pokemon.name }}</h3>
+</div>
