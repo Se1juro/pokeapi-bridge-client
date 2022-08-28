@@ -8,4 +8,5 @@ export interface IPokemonsState {
   totalPages: number;
   currentPage: number;
   pokemonName: string;
+  currentPokemon: IPokemon | undefined;
 }

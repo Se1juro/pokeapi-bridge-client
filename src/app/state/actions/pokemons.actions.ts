@@ -7,6 +7,11 @@ export const getPokemonList = createAction(
   props<{ limit: number; page: number }>()
 );
 
+export const getPokemonByName = createAction(
+  POKEMONS_ACTIONS_TYPES.GET_POKEMON_BY_NAME,
+  props<{ name: string }>()
+);
+
 export const loadedPokemons = createAction(
   POKEMONS_ACTIONS_TYPES.LIST_POKEMON_LOADED,
   props<{
@@ -15,6 +20,14 @@ export const loadedPokemons = createAction(
     totalRows: number;
     limit: number;
     totalPages: number;
+  }>()
+);
+
+export const currentPokemonLoaded = createAction(
+  POKEMONS_ACTIONS_TYPES.CURRENT_POKEMON_LOADED,
+  props<{
+    pokemon: IPokemon | undefined;
+    loading: boolean;
   }>()
 );
 

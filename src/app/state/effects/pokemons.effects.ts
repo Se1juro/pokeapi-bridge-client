@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { EMPTY } from 'rxjs';
+import { Store } from '@ngrx/store';
+import { EMPTY, of } from 'rxjs';
 import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
 import { PokemonService } from 'src/app/modules/pokemons/services/pokemon.service';
+import { currentPokemonLoaded } from '../actions/pokemons.actions';
 import { POKEMONS_ACTIONS_TYPES } from '../actionsTypes/pokemons.actionTypes';
+import { AppState } from '../app.state';
 
 @Injectable()
 export class PokemonsEffects {
@@ -72,8 +75,30 @@ export class PokemonsEffects {
     )
   );
 
+  getPokemonByName$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(POKEMONS_ACTIONS_TYPES.GET_POKEMON_BY_NAME),
+      switchMap(({ name }) =>
+        this.pokemonService.getPokemon(name, 1).pipe(
+          map((pokemon) => ({
+            type: POKEMONS_ACTIONS_TYPES.CURRENT_POKEMON_LOADED,
+            pokemon: pokemon,
+            loading: false,
+          })),
+          catchError((err) => {
+            this.store.dispatch(
+              currentPokemonLoaded({ pokemon: undefined, loading: false })
+            );
+            return of();
+          })
+        )
+      )
+    )
+  );
+
   constructor(
     private actions$: Actions,
-    private pokemonService: PokemonService
+    private pokemonService: PokemonService,
+    private store: Store<AppState>
   ) {}
 }

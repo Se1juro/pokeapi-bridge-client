@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { IPokemonsState } from 'src/app/modules/pokemons/interfaces/pokemons.state';
 import {
+  currentPokemonLoaded,
+  getPokemonByName,
   getPokemonList,
   loadedPokemons,
   setCurrentPage,
@@ -15,6 +17,7 @@ export const initialState: IPokemonsState = {
   totalPages: 0,
   currentPage: 1,
   pokemonName: '',
+  currentPokemon: undefined,
 };
 
 export const pokemonsReducer = createReducer(
@@ -48,6 +51,20 @@ export const pokemonsReducer = createReducer(
       ...state,
       loading: true,
       pokemonName: name,
+    };
+  }),
+  on(getPokemonByName, (state, { name }) => {
+    return {
+      ...state,
+      loading: true,
+      pokemonName: name,
+    };
+  }),
+  on(currentPokemonLoaded, (state, { pokemon }) => {
+    return {
+      ...state,
+      loading: false,
+      currentPokemon: pokemon,
     };
   })
 );

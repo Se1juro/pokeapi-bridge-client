@@ -45,3 +45,10 @@ export const selectCurrentPage = createSelector(
     return state.currentPage;
   }
 );
+
+export const selectCurrentPokemon = createSelector(
+  selectPokemons,
+  (state: IPokemonsState) => {
+    return state.currentPokemon;
+  }
+);

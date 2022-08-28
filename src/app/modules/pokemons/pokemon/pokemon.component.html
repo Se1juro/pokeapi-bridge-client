@@ -1,4 +1,8 @@
-<div class="card-pokemon" *ngFor="let pokemon of pokemons | async">
+<div
+  class="card-pokemon"
+  *ngFor="let pokemon of pokemons | async"
+  [routerLink]="['/pokemon', pokemon.name]"
+>
   <figure class="card-pokemon__image">
     <img src="{{ pokemon.sprites.front_default }}" alt="" srcset="" />
   </figure>

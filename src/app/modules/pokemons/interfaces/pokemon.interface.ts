@@ -1,3 +1,6 @@
+import { IAbilities } from './abilities.interface';
+import { IStat } from './stats.interface';
+
 export interface IPokemons {
   count: string;
   next: string;
@@ -17,4 +20,6 @@ export interface IPokemon {
   sprites: {
     front_default: string;
   };
+  stats: IStat[];
+  abilities: IAbilities[];
 }

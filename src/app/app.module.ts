@@ -21,6 +21,7 @@ import {
   NgbAlertModule,
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import {
     HeaderComponent,
     InfoPokemonComponent,
     NotFoundComponent,
+    PokemonInfoComponent,
   ],
   imports: [
     BrowserModule,
