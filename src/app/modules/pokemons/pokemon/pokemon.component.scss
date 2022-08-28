@@ -1,0 +1,16 @@
+.card-pokemon {
+  border: 1px solid red;
+  margin-right: 1em;
+  margin-bottom: 1em;
+  padding: 1em;
+  border-radius: 1em;
+  width: 20em;
+  &__image {
+    width: 100%;
+    text-align: center;
+  }
+  &__name {
+    text-transform: capitalize;
+    font-weight: bold;
+  }
+}

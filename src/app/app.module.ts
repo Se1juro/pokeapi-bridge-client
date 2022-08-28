@@ -14,6 +14,13 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
 import { pokemonsReducer } from './state/reducers/pokemons.reducer';
+import { EffectsModule } from '@ngrx/effects';
+import { PokemonsEffects } from './state/effects/pokemons.effects';
+import {
+  NgbPaginationModule,
+  NgbAlertModule,
+  NgbModule,
+} from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -30,6 +37,8 @@ import { pokemonsReducer } from './state/reducers/pokemons.reducer';
     MaterialModule,
     PokemonsModule,
     HttpClientModule,
+    NgbPaginationModule,
+    NgbAlertModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
@@ -39,6 +48,8 @@ import { pokemonsReducer } from './state/reducers/pokemons.reducer';
       maxAge: 25,
       logOnly: environment.production,
     }),
+    EffectsModule.forRoot([PokemonsEffects]),
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

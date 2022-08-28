@@ -15,6 +15,14 @@ export class PokemonService {
     page: number = 1,
     limit: number = 12
   ): Observable<IPokemonResponse> {
+    console.log(
+      '🚀 ~ file: pokemon.service.ts ~ line 18 ~ PokemonService ~ limit',
+      limit
+    );
+    console.log(
+      '🚀 ~ file: pokemon.service.ts ~ line 18 ~ PokemonService ~ page',
+      page
+    );
     return this.http.get<IPokemonResponse>(this.API_URL, {
       params: {
         page,

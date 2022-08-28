@@ -1,7 +1,6 @@
-import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { createSelector } from '@ngrx/store';
 import { AppState } from '../app.state';
 import { IPokemonsState } from '../../modules/pokemons/interfaces/pokemons.state';
-import { IPokemon } from 'src/app/modules/pokemons/interfaces/pokemon.interface';
 
 export const selectPokemons = (state: AppState) => state.pokemons;
 
@@ -16,5 +15,33 @@ export const selectLoadingPokemon = createSelector(
   selectPokemons,
   (state: IPokemonsState) => {
     return state.loading;
+  }
+);
+
+export const selectLimitPage = createSelector(
+  selectPokemons,
+  (state: IPokemonsState) => {
+    return state.limit;
+  }
+);
+
+export const selectTotalPages = createSelector(
+  selectPokemons,
+  (state: IPokemonsState) => {
+    return state.totalPages;
+  }
+);
+
+export const selectTotalRows = createSelector(
+  selectPokemons,
+  (state: IPokemonsState) => {
+    return state.totalRows;
+  }
+);
+
+export const selectCurrentPage = createSelector(
+  selectPokemons,
+  (state: IPokemonsState) => {
+    return state.currentPage;
   }
 );

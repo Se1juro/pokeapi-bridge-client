@@ -1,4 +1,17 @@
 <div class="container-pokedex">
-  <h1 *ngIf="$loading | async | json">Cargando...</h1>
-  <app-pokemon></app-pokemon>
+  <app-input-search class="container-input-search"></app-input-search>
+  <h1 *ngIf="loading$">Cargando...</h1>
+  <app-pokemon
+    *ngIf="loading$ == false"
+    class="container-pokedex__pokemons"
+  ></app-pokemon>
+  <mat-paginator
+    [length]="totalRows$"
+    [pageSize]="limit$"
+    aria-label="Seleccionar pagina"
+    class="container-pokedex__paginator"
+    [disabled]="loading$"
+    (page)="OnPageChange($event)"
+  >
+  </mat-paginator>
 </div>
