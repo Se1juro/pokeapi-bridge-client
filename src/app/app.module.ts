@@ -22,6 +22,9 @@ import {
   NgbModule,
 } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
+import { AuthModule } from './modules/auth/auth.module';
+import { authReducer } from './state/reducers/auth.reducer';
+import { AuthEffects } from './state/effects/auth.effects';
 
 @NgModule({
   declarations: [
@@ -41,16 +44,17 @@ import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.com
     HttpClientModule,
     NgbPaginationModule,
     NgbAlertModule,
+    AuthModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    StoreModule.forRoot({ pokemons: pokemonsReducer }),
+    StoreModule.forRoot({ pokemons: pokemonsReducer, auth: authReducer }),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
     }),
-    EffectsModule.forRoot([PokemonsEffects]),
+    EffectsModule.forRoot([PokemonsEffects, AuthEffects]),
     NgbModule,
   ],
   providers: [],

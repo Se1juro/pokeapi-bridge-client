@@ -1,0 +1,4 @@
+export enum AUTH_ACTIONS_TYPES {
+  LOGIN = 'LOGIN',
+  USER_LOGGED = 'USER_LOGGED',
+}

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
 import { EMPTY, of } from 'rxjs';
-import { map, mergeMap, catchError, switchMap } from 'rxjs/operators';
+import { map, catchError, switchMap } from 'rxjs/operators';
 import { PokemonService } from 'src/app/modules/pokemons/services/pokemon.service';
 import { currentPokemonLoaded } from '../actions/pokemons.actions';
 import { POKEMONS_ACTIONS_TYPES } from '../actionsTypes/pokemons.actionTypes';

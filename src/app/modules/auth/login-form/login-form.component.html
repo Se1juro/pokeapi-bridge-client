@@ -1,0 +1,25 @@
+<div class="container-login">
+  <div class="container-login__form">
+    <h1>Inicio de Sesion</h1>
+    <form [formGroup]="form" (submit)="onSubmitLogin()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>NickName</mat-label>
+          <input matInput placeholder="Nickname" formControlName="nickName" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+      <button mat-raised-button color="primary">Iniciar Sesion</button>
+    </form>
+  </div>
+</div>

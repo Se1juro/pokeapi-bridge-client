@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { InfoPokemonComponent } from './components/info-pokemon/info-pokemon.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
+import { LoginFormComponent } from './modules/auth/login-form/login-form.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,14 @@ const routes: Routes = [
   {
     path: 'pokemon/:name',
     component: PokemonInfoComponent,
+  },
+  {
+    path: 'login',
+    component: LoginFormComponent,
+  },
+  {
+    path: 'signup',
+    component: LoginFormComponent,
   },
   {
     path: '**',
