@@ -4,6 +4,7 @@ import {
   getPokemonList,
   loadedPokemons,
   setCurrentPage,
+  setPokemonName,
 } from '../actions/pokemons.actions';
 
 export const initialState: IPokemonsState = {
@@ -13,6 +14,7 @@ export const initialState: IPokemonsState = {
   totalRows: 0,
   totalPages: 0,
   currentPage: 1,
+  pokemonName: '',
 };
 
 export const pokemonsReducer = createReducer(
@@ -39,6 +41,13 @@ export const pokemonsReducer = createReducer(
       ...state,
       loading: true,
       currentPage: page,
+    };
+  }),
+  on(setPokemonName, (state, { name }) => {
+    return {
+      ...state,
+      loading: true,
+      pokemonName: name,
     };
   })
 );

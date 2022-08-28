@@ -1,9 +1,18 @@
-<mat-form-field appearance="outline" floatLabel="always">
+<mat-form-field
+  appearance="outline"
+  floatLabel="always"
+  class="mat-form-search"
+>
   <mat-label>Buscar Pokemon</mat-label>
   <input
     matInput
     placeholder="Nombre del Pokemon"
     class="input-search"
     type="text"
+    [(ngModel)]="pokemonName"
+    type="text"
+    name="userQuestion"
+    id="userQuestions"
+    (ngModelChange)="this.pokemonNameUpdate.next($event)"
   />
 </mat-form-field>

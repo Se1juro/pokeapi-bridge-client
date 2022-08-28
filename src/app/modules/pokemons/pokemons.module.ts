@@ -5,9 +5,10 @@ import { PokemonsComponent } from './pokemons.component';
 import { PokemonComponent } from './pokemon/pokemon.component';
 import { MaterialModule } from 'src/app/material.module';
 import { InputSearchComponent } from './input-search/input-search.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [PokemonsComponent, PokemonComponent, InputSearchComponent],
-  imports: [CommonModule, PokemonsRoutingModule, MaterialModule],
+  imports: [CommonModule, PokemonsRoutingModule, MaterialModule, FormsModule],
 })
 export class PokemonsModule {}

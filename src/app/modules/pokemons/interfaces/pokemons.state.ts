@@ -7,4 +7,5 @@ export interface IPokemonsState {
   totalRows: number;
   totalPages: number;
   currentPage: number;
+  pokemonName: string;
 }

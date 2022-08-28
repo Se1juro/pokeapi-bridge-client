@@ -39,7 +39,34 @@ export class PokemonsEffects {
             limit: pokemons.limit,
             totalPages: pokemons.totalPages,
           })),
-          catchError(() => EMPTY)
+          catchError((err) => EMPTY)
+        )
+      )
+    )
+  );
+
+  setPokemonName$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(POKEMONS_ACTIONS_TYPES.SET_POKEMON_NAME),
+      switchMap(({ name, page }) =>
+        this.pokemonService.getPokemon(name, page).pipe(
+          map((pokemon) => ({
+            type: POKEMONS_ACTIONS_TYPES.LIST_POKEMON_LOADED,
+            pokemons: [pokemon],
+          })),
+          catchError((err) =>
+            this.pokemonService.getPokemons(page).pipe(
+              map((pokemons) => ({
+                type: POKEMONS_ACTIONS_TYPES.LIST_POKEMON_LOADED,
+                pokemons: pokemons.rows,
+                currentPage: pokemons.currentPage,
+                totalRows: pokemons.count,
+                limit: pokemons.limit,
+                totalPages: pokemons.totalPages,
+              })),
+              catchError((err) => EMPTY)
+            )
+          )
         )
       )
     )

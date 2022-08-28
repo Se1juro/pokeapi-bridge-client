@@ -44,7 +44,6 @@ export class PokemonsComponent implements OnInit {
       .select(selectCurrentPage)
       .subscribe((res) => (this.currentPage$ = res));
 
-    // this.store.dispatch(loadedPokemons({ pokemons: [] }));
     this.store.dispatch(
       getPokemonList({
         limit: this.limit$,

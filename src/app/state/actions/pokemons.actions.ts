@@ -22,3 +22,8 @@ export const setCurrentPage = createAction(
   POKEMONS_ACTIONS_TYPES.SET_CURRENT_PAGE,
   props<{ page: number }>()
 );
+
+export const setPokemonName = createAction(
+  POKEMONS_ACTIONS_TYPES.SET_POKEMON_NAME,
+  props<{ name: string; page: number }>()
+);
