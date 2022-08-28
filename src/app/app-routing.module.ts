@@ -3,6 +3,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { InfoPokemonComponent } from './components/info-pokemon/info-pokemon.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { LoggedGuard } from './guards/logged.guard';
 import { LoginFormComponent } from './modules/auth/login-form/login-form.component';
 
 const routes: Routes = [
@@ -12,6 +14,7 @@ const routes: Routes = [
       import('./modules/pokemons/pokemons.module').then(
         (m) => m.PokemonsModule
       ),
+    canActivate: [AuthGuardGuard],
   },
   {
     path: 'pokedex',
@@ -19,18 +22,22 @@ const routes: Routes = [
       import('./modules/pokemons/pokemons.module').then(
         (m) => m.PokemonsModule
       ),
+    canActivate: [AuthGuardGuard],
   },
   {
     path: 'pokemon/:name',
     component: PokemonInfoComponent,
+    canActivate: [AuthGuardGuard],
   },
   {
     path: 'login',
     component: LoginFormComponent,
+    canActivate: [LoggedGuard],
   },
   {
     path: 'signup',
     component: LoginFormComponent,
+    canActivate: [LoggedGuard],
   },
   {
     path: '**',

@@ -10,5 +10,21 @@ export const login = createAction(
 
 export const userLogged = createAction(
   AUTH_ACTIONS_TYPES.USER_LOGGED,
-  props<{ user: IUser; token: string; loading: boolean }>()
+  props<{ user: IUser; token: string; loading: boolean; logged: boolean }>()
+);
+
+export const checkLogged = createAction(AUTH_ACTIONS_TYPES.CHECK_LOGGED);
+
+export const userChecked = createAction(
+  AUTH_ACTIONS_TYPES.USER_CHECKED,
+  props<{ user: IUser; logged: boolean }>()
+);
+
+export const setLoginError = createAction(
+  AUTH_ACTIONS_TYPES.SET_LOGIN_ERROR,
+  props<{
+    user: IUser | undefined;
+    token: string | undefined;
+    logged: boolean;
+  }>()
 );

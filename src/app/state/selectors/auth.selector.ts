@@ -15,3 +15,7 @@ export const selectUser = createSelector(selectAuth, (state: IAuthState) => {
 export const selectLoading = createSelector(selectAuth, (state: IAuthState) => {
   return state.loading;
 });
+
+export const selectLogged = createSelector(selectAuth, (state: IAuthState) => {
+  return state.logged;
+});

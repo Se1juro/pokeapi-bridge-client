@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { checkLogged } from 'src/app/state/actions/auth.actions';
 import {
   getPokemonList,
   loadedPokemons,
@@ -27,6 +28,7 @@ export class PokemonsComponent implements OnInit {
   currentPage$: number = 1;
   totalPages$: number = 0;
   totalRows$: number = 0;
+  loggedIn: boolean = false;
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {

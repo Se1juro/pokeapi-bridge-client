@@ -1,8 +1,16 @@
-import { Component, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { login } from 'src/app/state/actions/auth.actions';
 import { AppState } from 'src/app/state/app.state';
+import { selectLogged } from 'src/app/state/selectors/auth.selector';
 import { IBodyLogin } from '../interfaces/bodyLogin.interface';
 
 @Component({
@@ -11,10 +19,12 @@ import { IBodyLogin } from '../interfaces/bodyLogin.interface';
   styleUrls: ['./login-form.component.scss'],
 })
 export class LoginFormComponent implements OnInit {
+  @Input() loggedIn: boolean = false;
   public form!: FormGroup;
   constructor(
     private formBuilder: FormBuilder,
-    private store: Store<AppState>
+    private store: Store<AppState>,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -30,5 +40,11 @@ export class LoginFormComponent implements OnInit {
       password: this.form.value.password,
     };
     this.store.dispatch(login(body));
+    this.store.select(selectLogged).subscribe((res) => {
+      this.loggedIn = res;
+      if (res) {
+        this.router.navigate(['/']);
+      }
+    });
   }
 }

@@ -9,7 +9,7 @@ import { MaterialModule } from './material.module';
 import { InfoPokemonComponent } from './components/info-pokemon/info-pokemon.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PokemonsModule } from './modules/pokemons/pokemons.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from '../environments/environment';
 import { StoreModule } from '@ngrx/store';
@@ -25,6 +25,7 @@ import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.com
 import { AuthModule } from './modules/auth/auth.module';
 import { authReducer } from './state/reducers/auth.reducer';
 import { AuthEffects } from './state/effects/auth.effects';
+import { HttpRequestInterceptor } from './interceptors/http.interceptor';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,13 @@ import { AuthEffects } from './state/effects/auth.effects';
     EffectsModule.forRoot([PokemonsEffects, AuthEffects]),
     NgbModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpRequestInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
