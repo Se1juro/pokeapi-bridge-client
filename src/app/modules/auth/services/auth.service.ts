@@ -6,7 +6,11 @@ import { AppState } from 'src/app/state/app.state';
 import { selectToken } from 'src/app/state/selectors/auth.selector';
 import { IUser } from '../interfaces/auth.state';
 import { IBodyLogin } from '../interfaces/bodyLogin.interface';
-import { IResponseLogin } from '../interfaces/responseLogin.interface';
+import { IBodySignUp } from '../interfaces/bodySignUp.interface';
+import {
+  IResponseLogin,
+  IResponseRegistry,
+} from '../interfaces/responseLogin.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -18,6 +22,10 @@ export class AuthService {
 
   login(bodyLogin: IBodyLogin): Observable<IResponseLogin> {
     return this.http.post<IResponseLogin>(`${this.API_URL}/sigin`, bodyLogin);
+  }
+
+  signUp(body: IBodySignUp): Observable<IResponseRegistry> {
+    return this.http.post<IResponseRegistry>(`${this.API_URL}/signup`, body);
   }
 
   authCheck(): Observable<IUser> {

@@ -5,6 +5,7 @@ import {
   login,
   userChecked,
   userLogged,
+  signUp,
 } from '../actions/auth.actions';
 
 export const initialState: IAuthState = {
@@ -26,7 +27,12 @@ export const authReducer = createReducer(
   on(checkLogged, (state) => {
     return { ...state, loading: true, logged: false };
   }),
-  on(userChecked, (state, { logged, user }) => {
-    return { ...state, loading: false, logged, user };
+  on(userChecked, (state, { logged, user, token }) => {
+    if (token) localStorage.setItem('token', token);
+    if (!logged) localStorage.removeItem('token');
+    return { ...state, loading: false, logged, user, token };
+  }),
+  on(signUp, (state, {}) => {
+    return { ...state, loading: true };
   })
 );

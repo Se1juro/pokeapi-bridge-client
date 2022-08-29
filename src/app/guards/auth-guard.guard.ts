@@ -39,6 +39,8 @@ export class AuthGuardGuard implements CanActivate {
       filter((logged) => !!logged),
       map((logged) => {
         if (!logged) {
+          localStorage.removeItem('token');
+
           this.router.navigateByUrl('/login');
           return false;
         }

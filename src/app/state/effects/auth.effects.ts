@@ -52,6 +52,42 @@ export class AuthEffects {
                 user: undefined,
               })
             );
+            localStorage.removeItem('token');
+            return of();
+          })
+        )
+      )
+    )
+  );
+
+  registerUser$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(AUTH_ACTIONS_TYPES.SIGN_UP),
+      switchMap(({ name, nickName, password, team }) =>
+        this.authService.signUp({ name, nickName, password, team }).pipe(
+          map((response) => {
+            console.log(
+              '🚀 ~ file: auth.effects.ts ~ line 89 ~ AuthEffects ~ map ~ response',
+              response
+            );
+
+            return {
+              type: AUTH_ACTIONS_TYPES.USER_CHECKED,
+              user: response.user,
+              token: response.token,
+              logged: true,
+            };
+          }),
+          catchError(() => {
+            this.store.dispatch(
+              setLoginError({
+                logged: false,
+                token: undefined,
+                user: undefined,
+              })
+            );
+            localStorage.removeItem('token');
+
             return of();
           })
         )

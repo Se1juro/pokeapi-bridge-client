@@ -6,7 +6,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/header/header.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
-import { InfoPokemonComponent } from './components/info-pokemon/info-pokemon.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PokemonsModule } from './modules/pokemons/pokemons.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -31,7 +30,6 @@ import { HttpRequestInterceptor } from './interceptors/http.interceptor';
   declarations: [
     AppComponent,
     HeaderComponent,
-    InfoPokemonComponent,
     NotFoundComponent,
     PokemonInfoComponent,
   ],

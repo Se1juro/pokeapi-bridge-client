@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { InfoPokemonComponent } from './components/info-pokemon/info-pokemon.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { PokemonInfoComponent } from './components/pokemon-info/pokemon-info.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { LoggedGuard } from './guards/logged.guard';
 import { LoginFormComponent } from './modules/auth/login-form/login-form.component';
+import { RegisterComponent } from './modules/auth/register/register.component';
 
 const routes: Routes = [
   {
@@ -36,7 +36,7 @@ const routes: Routes = [
   },
   {
     path: 'signup',
-    component: LoginFormComponent,
+    component: RegisterComponent,
     canActivate: [LoggedGuard],
   },
   {

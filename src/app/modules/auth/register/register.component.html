@@ -1,0 +1,47 @@
+<div class="container-register">
+  <div class="container-register__form">
+    <h1>Crear una cuenta</h1>
+    <form [formGroup]="form" (submit)="onSubmitSignUp()">
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Nombre</mat-label>
+          <input matInput placeholder="Nickname" formControlName="name" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Equipo</mat-label>
+          <mat-select
+            name="team"
+            [(ngModel)]="selectedTeam"
+            formControlName="team"
+          >
+            <mat-option *ngFor="let team of teams" [value]="team.value">
+              {{ team.description }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>NickName</mat-label>
+          <input matInput placeholder="Nickname" formControlName="nickName" />
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field appearance="outline">
+          <mat-label>Password</mat-label>
+          <input
+            matInput
+            placeholder="Password"
+            type="password"
+            formControlName="password"
+          />
+        </mat-form-field>
+      </p>
+      <div class="container-register__form-buttons">
+        <button mat-raised-button color="primary">Registrarse</button>
+      </div>
+    </form>
+  </div>
+</div>

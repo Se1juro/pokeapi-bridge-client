@@ -19,7 +19,10 @@
           />
         </mat-form-field>
       </p>
-      <button mat-raised-button color="primary">Iniciar Sesion</button>
+      <div class="container-login__form-buttons">
+        <a class="button-logout" [routerLink]="['/signup']">Registrate aqui</a>
+        <button mat-raised-button color="primary">Iniciar Sesion</button>
+      </div>
     </form>
   </div>
 </div>

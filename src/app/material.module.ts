@@ -4,6 +4,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatInputModule } from '@angular/material/input';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   exports: [
@@ -12,6 +13,7 @@ import { MatButtonModule } from '@angular/material/button';
     MatInputModule,
     MatProgressBarModule,
     MatButtonModule,
+    MatSelectModule,
   ],
 })
 export class MaterialModule {}
