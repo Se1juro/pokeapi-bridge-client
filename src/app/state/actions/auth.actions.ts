@@ -17,7 +17,11 @@ export const checkLogged = createAction(AUTH_ACTIONS_TYPES.CHECK_LOGGED);
 
 export const userChecked = createAction(
   AUTH_ACTIONS_TYPES.USER_CHECKED,
-  props<{ user: IUser; logged: boolean; token: string }>()
+  props<{
+    user: IUser | undefined;
+    logged: boolean;
+    token: string | undefined;
+  }>()
 );
 
 export const setLoginError = createAction(

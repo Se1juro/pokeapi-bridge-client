@@ -66,11 +66,6 @@ export class AuthEffects {
       switchMap(({ name, nickName, password, team }) =>
         this.authService.signUp({ name, nickName, password, team }).pipe(
           map((response) => {
-            console.log(
-              '🚀 ~ file: auth.effects.ts ~ line 89 ~ AuthEffects ~ map ~ response',
-              response
-            );
-
             return {
               type: AUTH_ACTIONS_TYPES.USER_CHECKED,
               user: response.user,
